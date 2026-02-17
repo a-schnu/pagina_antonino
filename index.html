@@ -1,252 +1,399 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina di Antonino Mustazza</title>
+    <title>Antonino Mustazza | Personal Page</title>
     <style>
+        :root {
+            --bg: #0b1020;
+            --surface: rgba(255, 255, 255, 0.08);
+            --surface-strong: rgba(255, 255, 255, 0.16);
+            --text: #eef2ff;
+            --muted: #b7c0d9;
+            --accent: #f6c453;
+            --accent-strong: #f59e0b;
+            --border: rgba(255, 255, 255, 0.18);
+            --shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #ffffff;
-            color: #333;
             margin: 0;
-            padding: 0;
+            font-family: "Inter", "Segoe UI", Arial, sans-serif;
+            color: var(--text);
+            background: radial-gradient(circle at 20% 20%, #1e2a54, var(--bg) 45%), #080d1a;
+            min-height: 100vh;
+            line-height: 1.6;
         }
-        header {
-            background-color: #f0f8ff;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            border-bottom: 2px solid #d3d3d3;
-        }
-        .profile-image {
-            border-radius: 50%;
-            width: 140.5px;
-            height: 140.5px;
-            margin-right: 20px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .profile-image:hover {
-            transform: scale(1.1);
-        }
-        .profile-name {
-            font-size: 50px; /* Incrementato del 25% */
-            font-weight: bold;
-        }
-        nav {
-            margin-left: auto;
-            display: flex;
-            align-items: center;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #333;
-            font-size: 22px;
-            display: flex;
-            align-items: center;
-        }
-        nav img {
-            width: 40px;
-            height: 26px;
-            margin-right: 6px;
-        }
+
         .container {
-            padding: 20px;
-            max-width: 800px;
+            width: min(1100px, 92%);
             margin: 0 auto;
         }
-        .quote {
-            text-align: center;
-            font-size: 24px;
-            font-style: italic;
-            color: #555;
-            margin: 20px 0;
-            padding: 0 20px;
+
+        header {
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(8px);
+            background: rgba(11, 16, 32, 0.75);
+            border-bottom: 1px solid var(--border);
+            z-index: 10;
         }
-        .cv-section {
-            margin-top: 40px;
-            margin-bottom: 40px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border: 2px solid #d3d3d3;
-            border-radius: 15px;
-            text-align: center;
-        }
-        .cv-section a {
-            color: #d4af37;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .cv-section a:hover {
-            color: #b8860b; /* Giallo più intenso */
-        }
-        .post-section {
-            text-align: center;
-        }
-        .post-section h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-        .post {
-            border: 2px solid #d3d3d3;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            padding: 10px;
-            background-color: #f9f9f9;
-            text-align: center;
-        }
-        .post img {
-            max-width: 50%; /* Ridotto del 50% */
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .button {
-            background-color: #b8860b; /* Giallo più intenso */
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
-            font-size: 16px;
-            color: #fff;
-        }
-        .button:hover {
-            background-color: #996515;
-        }
-        footer {
-            background-color: #f0f8ff;
-            padding: 10px;
-            text-align: center;
-            margin-top: 20px;
-            border-top: 2px solid #d3d3d3;
-        }
-        footer a {
-            text-decoration: none;
-            color: #333;
-            font-size: 18px;
-            margin: 0 10px;
+
+        .topbar {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            gap: 18px;
         }
-        footer img {
-            width: 30px;
-            height: 18px;
-            margin-right: 5px;
+
+        .identity {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
         }
+
+        .identity img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            transition: transform 0.25s ease;
+        }
+
+        .identity img:hover {
+            transform: scale(1.08);
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        nav a,
+        .social a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            padding: 8px 12px;
+            border-radius: 999px;
+            transition: 0.2s ease;
+        }
+
+        nav a:hover,
+        .social a:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            background: var(--surface-strong);
+        }
+
+        nav img,
+        .social img {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            align-items: center;
+            padding: 52px 0 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            line-height: 1.1;
+            margin: 0 0 14px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            margin: 0 0 22px;
+            max-width: 60ch;
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: rgba(246, 196, 83, 0.16);
+            border: 1px solid rgba(246, 196, 83, 0.4);
+            color: #ffe9ab;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .cta {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+            color: #1b1201;
+            text-decoration: none;
+            padding: 11px 18px;
+            border-radius: 12px;
+            font-weight: 700;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease;
+        }
+
+        .cta:hover {
+            transform: translateY(-2px) scale(1.01);
+        }
+
+        .hero-card,
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-card {
+            padding: 20px;
+        }
+
+        .hero-card blockquote {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #f2f6ff;
+        }
+
+        .hero-card cite {
+            margin-top: 12px;
+            display: block;
+            color: var(--muted);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+            margin: 24px 0 40px;
+        }
+
+        .card {
+            padding: 18px;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+
+        .posts {
+            display: grid;
+            gap: 14px;
+        }
+
+        .post {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 10px;
+        }
+
+        .post a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .post img {
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+            display: block;
+        }
+
+        .post p {
+            margin: 8px 0 2px;
+            color: var(--muted);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 20px 0 35px;
+            color: var(--muted);
+        }
+
+        .footer-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .social {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
         .modal {
             display: none;
             position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.9);
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 20;
+            padding: 30px;
         }
+
         .modal-content {
-            margin: auto;
             display: block;
-            width: 80%;
-            max-width: 700px;
+            margin: auto;
+            max-width: min(900px, 100%);
+            max-height: 90vh;
+            border-radius: 12px;
         }
-        .modal-content {  
-            animation-name: zoom;
-            animation-duration: 0.6s;
-        }
-        @keyframes zoom {
-            from {transform: scale(0)} 
-            to {transform: scale(1)}
-        }
+
         .close {
             position: absolute;
-            top: 15px;
-            right: 35px;
+            right: 24px;
+            top: 14px;
+            font-size: 34px;
             color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
             cursor: pointer;
+        }
+
+        @media (max-width: 900px) {
+            .hero,
+            .grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <img src="tuo_profilo.jpg" alt="Immagine Profilo" class="profile-image" id="profilePic">
-        <div class="profile-name">Antonino Mustazza</div>
+<header>
+    <div class="container topbar">
+        <div class="identity">
+            <img src="tuo_profilo.jpg" alt="Immagine profilo di Antonino" id="profilePic">
+            <span>Antonino Mustazza</span>
+        </div>
         <nav>
-            <a href="https://www.instagram.com/sickily_">
+            <a href="https://www.instagram.com/sickily_" target="_blank" rel="noopener noreferrer">
                 <img src="instagram_logo.png" alt="Instagram"> Instagram
             </a>
-            <a href="https://x.com/musty_eu">
-                <img src="twitter_logo.png" alt="Twitter"> Twitter
+            <a href="https://x.com/musty_eu" target="_blank" rel="noopener noreferrer">
+                <img src="twitter_logo.png" alt="Twitter"> X / Twitter
             </a>
-            <a href="https://www.linkedin.com/in/a-must/">
+            <a href="https://www.linkedin.com/in/a-must/" target="_blank" rel="noopener noreferrer">
                 <img src="linkedin_logo.png" alt="LinkedIn"> LinkedIn
             </a>
         </nav>
-    </header>
-    <div class="container">
-        <div class="quote">
-            "There's no guarantee that good ideas prevail. But if you don't try to have those good ideas and get them out there, then of course they won't prevail!" - Paul Krugman
+    </div>
+</header>
+
+<main class="container">
+    <section class="hero">
+        <div>
+            <span class="pill">Personal Website</span>
+            <h1>Ciao, sono Antonino. Costruisco idee, contenuti e connessioni.</h1>
+            <p>
+                Questa è la mia pagina personale: uno spazio semplice per raccontare chi sono, condividere i miei social
+                e mostrare alcuni contenuti recenti. Ho dato un look più moderno, pulito e professionale mantenendo la tua identità.
+            </p>
+            <a class="cta" href="CV_Antonino.pdf" target="_blank" rel="noopener noreferrer">Apri il mio Curriculum Vitae</a>
         </div>
-        <div class="cv-section">
-            <h3><a href="CV_Antonino.pdf" target="_blank">Curriculum Vitae</a></h3>
-        </div>
-        <div class="post-section">
-            <h2>Post di Instagram</h2>
-            <div class="post">
-                <a href="https://www.instagram.com/p/C5JrozXINKN/" target="_blank">
-                    <img src="post_instagram_1.png" alt="Post di Instagram 1">
-                </a>
-                <p> Post di Instagram 1</p>
+        <aside class="hero-card">
+            <blockquote>
+                “There's no guarantee that good ideas prevail. But if you don't try to have those good ideas and get them out there,
+                then of course they won't prevail!”
+            </blockquote>
+            <cite>— Paul Krugman</cite>
+        </aside>
+    </section>
+
+    <section class="grid">
+        <article class="card">
+            <h2>Post in evidenza</h2>
+            <div class="posts">
+                <div class="post">
+                    <a href="https://www.instagram.com/p/C5JrozXINKN/" target="_blank" rel="noopener noreferrer">
+                        <img src="post_instagram_1.png" alt="Post Instagram 1" class="zoomable-image">
+                        <p>Post Instagram #1</p>
+                    </a>
+                </div>
+                <div class="post">
+                    <a href="https://www.instagram.com/p/C6TgXt4IxiF/" target="_blank" rel="noopener noreferrer">
+                        <img src="post_instagram_2.png" alt="Post Instagram 2" class="zoomable-image">
+                        <p>Post Instagram #2</p>
+                    </a>
+                </div>
             </div>
-            <div class="post">
-                <a href="https://www.instagram.com/p/C6TgXt4IxiF/" target="_blank">
-                    <img src="post_instagram_2.png" alt="Post di Instagram 2">
+        </article>
+
+        <article class="card">
+            <h2>Contatti rapidi</h2>
+            <p style="color: var(--muted); margin-top: 0;">Per collaborazioni, networking o solo per scambiare idee:</p>
+            <div class="social">
+                <a href="https://www.instagram.com/sickily_" target="_blank" rel="noopener noreferrer">
+                    <img src="instagram_logo.png" alt="Instagram"> Instagram
                 </a>
-                <p>Post di Instagram 2</p>
+                <a href="https://x.com/musty_eu" target="_blank" rel="noopener noreferrer">
+                    <img src="twitter_logo.png" alt="Twitter"> Twitter
+                </a>
+                <a href="https://www.linkedin.com/in/a-must/" target="_blank" rel="noopener noreferrer">
+                    <img src="linkedin_logo.png" alt="LinkedIn"> LinkedIn
+                </a>
             </div>
+        </article>
+    </section>
+</main>
+
+<footer>
+    <div class="container footer-wrap">
+        <p>© 2026 Antonino Mustazza. Tutti i diritti riservati.</p>
+        <div class="social">
+            <a href="https://www.instagram.com/sickily_" target="_blank" rel="noopener noreferrer"><img src="instagram_logo.png" alt="Instagram">Instagram</a>
+            <a href="https://x.com/musty_eu" target="_blank" rel="noopener noreferrer"><img src="twitter_logo.png" alt="Twitter">Twitter</a>
+            <a href="https://www.linkedin.com/in/a-must/" target="_blank" rel="noopener noreferrer"><img src="linkedin_logo.png" alt="LinkedIn">LinkedIn</a>
         </div>
     </div>
-    <footer>
-        <p>© 2024 Antonio. Tutti i diritti riservati.</p>
-        <a href="https://www.instagram.com/sickily_">
-            <img src="instagram_logo.png" alt="Instagram"> Instagram
-        </a>
-        <a href="https://x.com/musty_eu">
-            <img src="twitter_logo.png" alt="Twitter"> Twitter
-        </a>
-        <a href="https://www.linkedin.com/in/a-must/">
-            <img src="linkedin_logo.png" alt="LinkedIn"> LinkedIn
-        </a>
-    </footer>
-    <div id="myModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="img01">
-    </div>
-    <script>
-        var modal = document.getElementById('myModal');
-        var img = document.getElementById('profilePic');
-        var modalImg = document.getElementById("img01");
-        img.onclick = function(){
-            modal.style.display = "block";
-            modalImg.src = this.src;
+</footer>
+
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01" alt="Anteprima ingrandita">
+</div>
+
+<script>
+    const modal = document.getElementById('myModal');
+    const modalImg = document.getElementById('img01');
+    const closeBtn = document.querySelector('.close');
+    const clickableImages = document.querySelectorAll('#profilePic, .zoomable-image');
+
+    clickableImages.forEach((image) => {
+        image.addEventListener('click', (event) => {
+            event.preventDefault();
+            modal.style.display = 'block';
+            modalImg.src = image.src;
+        });
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
         }
-        var span = document.getElementsByClassName("close")[0];
-        span.onclick = function() { 
-            modal.style.display = "none";
-        }
-    </script>
+    });
+</script>
 </body>
 </html>
