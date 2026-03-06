@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+*.duckdb
+*.parquet
+reports/weekly_report_*.md
