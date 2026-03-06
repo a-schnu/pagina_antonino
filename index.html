@@ -294,6 +294,7 @@
             <a href="https://www.linkedin.com/in/a-must/" target="_blank" rel="noopener noreferrer">
                 <img src="linkedin_logo.png" alt="LinkedIn"> LinkedIn
             </a>
+            <a href="#energy-observatory">⚡ Sicily Energy Observatory</a>
         </nav>
     </div>
 </header>
@@ -316,6 +317,29 @@
             </blockquote>
             <cite>— Paul Krugman</cite>
         </aside>
+    </section>
+
+
+    <section id="energy-observatory" class="card" style="margin: 0 0 36px;">
+        <h2>⚡ Sicily Energy Observatory</h2>
+        <p style="color: var(--muted);">
+            Nuovo progetto di data engineering: pipeline automatizzata (Terna + ENTSO-E), storage storico, API FastAPI e dashboard Streamlit
+            con analisi di renewable penetration, picchi di produzione e anomaly detection per la Sicilia.
+        </p>
+        <p>
+            <a class="cta" href="sicily-energy-observatory/README.md" target="_blank" rel="noopener noreferrer">Apri documentazione progetto</a>
+        </p>
+        <div style="margin-top: 18px; border: 1px solid var(--border); border-radius: 14px; overflow: hidden;">
+            <iframe
+                title="Sicily Energy Observatory Dashboard"
+                src="http://localhost:8501"
+                style="width:100%; height:520px; border:0; background:#0b1020;"
+                loading="lazy">
+            </iframe>
+        </div>
+        <p style="color: var(--muted); margin-top: 10px;">
+            Se l'anteprima non è visibile su GitHub Pages, avvia localmente: <code>streamlit run sicily-energy-observatory/dashboard/app.py</code>.
+        </p>
     </section>
 
     <section class="grid">
